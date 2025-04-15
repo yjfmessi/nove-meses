@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Namoro</title>
+  <style>
+    /* Resetando margens e paddings */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      text-align: center;
+    }
+
+    header {
+      background-color: #ff69b4;
+      padding: 20px;
+      color: white;
+      font-size: 2rem;
+    }
+
+    .counter {
+      font-size: 2rem;
+      margin-top: 20px;
+      background-color: #ffb6c1;
+      padding: 10px;
+      border-radius: 8px;
+      width: 300px;
+      margin: 0 auto;
+    }
+
+    .quiz {
+      background-color: #fff;
+      margin-top: 30px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 80%;
+      max-width: 400px;
+      margin: 30px auto;
+    }
+
+    .question {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .answers button {
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      margin: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .answers button:hover {
+      background-color: #ff1493;
+    }
+
+    .photo {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-top: 30px;
+    }
+
+    audio {
+      display: none;
+    }
+
+  </style>
+</head>
+<body>
+  <header>Nosso Cantinho</header>
+
+  <!-- Música de Fundo
+  <audio autoplay loop>
+  <source src="caminho/para/AmorPuroDjavan.mp3" type="audio/mp3">
+  Seu navegador não suporta o elemento de áudio.
+</audio>
+
+  <!-- Contador de tempo -->
+  <div class="counter">
+    <h2>Tempo de Namoro</h2>
+    <p id="counter"></p>
+  </div>
+
+  <!-- Quiz de casal -->
+  <div class="quiz">
+    <div class="question" id="question">Qual o filme preferido do casal?</div>
+    <div class="answers">
+      <button onclick="nextQuestion('certo')">Resposta  Diario dr um vampiro</button>
+      <button onclick="nextQuestion('errado')">Resposta Carros</button>
+      <button onclick="nextQuestion('errado')">Resposta Bts</button>
+    </div>
+  </div>
+
+  <!-- Foto do casal -->
+  <img class="photo" src="foto-casal.jpg" alt="Foto do Casal">
+
+  <script>
+    // Função para contador de tempo
+    function updateCounter() {
+      const startDate = new Date('2024-07-14T00:00:00'); // Data de início do namoro
+      const now = new Date();
+      const diff = now - startDate;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const months = Math.floor(days / 30);
+      const seconds = Math.floor(diff / 1000);
+
+      document.getElementById('counter').innerHTML = `${months} meses, ${days} dias e ${seconds} segundos`;
+    }
+
+    setInterval(updateCounter, 1000); // Atualiza o contador a cada segundo
+
+    // Função para o quiz
+    let questionIndex = 0;
+    const questions = [
+      { question: "Qual o filme preferido do casal?", answers: ["Resposta 1", "Resposta 2", "Resposta 3"], correct: 0 },
+      { question: "Quem é mais romântico?", answers: ["Pessoa A", "Pessoa B", "Ambos"], correct: 0 },
+      { question: "Qual o destino de viagem dos sonhos?", answers: ["Paris", "Japão", "Brasil"], correct: 0 },
+    ];
+
+    function nextQuestion(answer) {
+      if (answer === 'certo') {
+        alert('Resposta certa!'); // Aqui você pode adicionar algum efeito ou animação
+      } else {
+        alert('Resposta errada! Tente de novo.');
+      }
+
+      questionIndex = (questionIndex + 1) % questions.length;
+      document.getElementById('question').innerText = questions[questionIndex].question;
+      const buttons = document.querySelectorAll('.answers button');
+      buttons.forEach((button, index) => {
+        button.innerText = questions[questionIndex].answers[index];
+      });
+    }
+  </script>
+</body>
+</html>
